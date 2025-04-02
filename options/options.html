@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marketplace Monitor Settings</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Advanced Settings</h1>
+    
+    <div class="tabs">
+      <button class="tab-button active" data-tab="telegram">Telegram</button>
+      <button class="tab-button" data-tab="products">Products</button>
+      <button class="tab-button" data-tab="excluded">Excluded Words</button>
+      <button class="tab-button" data-tab="location">Location</button>
+      <button class="tab-button" data-tab="schedule">Schedule</button>
+    </div>
+    
+    <!-- Telegram Settings Tab -->
+    <div id="telegram" class="tab-content active">
+      <h2>Telegram Settings</h2>
+      
+      <div class="form-group">
+        <label for="telegram-token">Bot Token:</label>
+        <input type="text" id="telegram-token" placeholder="Enter your Telegram bot token">
+      </div>
+      
+      <div class="form-group">
+        <label for="telegram-chat-id">Chat ID:</label>
+        <input type="text" id="telegram-chat-id" placeholder="Enter your Telegram chat ID">
+      </div>
+      
+      <button id="test-connection">Test Connection</button>
+      <div id="connection-status"></div>
+    </div>
+    
+    <!-- Products Settings Tab -->
+    <div id="products" class="tab-content">
+      <h2>Product Monitoring</h2>
+      
+      <div class="form-group">
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" placeholder="e.g., iPhone 12">
+      </div>
+      
+      <div class="form-group">
+        <label for="min-price">Min Price ($):</label>
+        <input type="number" id="min-price" placeholder="0">
+      </div>
+      
+      <div class="form-group">
+        <label for="max-price">Max Price ($):</label>
+        <input type="number" id="max-price" placeholder="1000">
+      </div>
+      
+      <div class="form-group checkbox">
+        <input type="checkbox" id="preferred">
+        <label for="preferred">Preferred Product</label>
+      </div>
+      
+      <button id="add-product">Add Product</button>
+      
+      <h3>Monitored Products</h3>
+      <div class="table-container">
+        <table id="products-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Min Price</th>
+              <th>Max Price</th>
+              <th>Preferred</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Product rows will be added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Excluded Words Tab -->
+    <div id="excluded" class="tab-content">
+      <h2>Excluded Words</h2>
+      
+      <div class="form-group">
+        <label for="excluded-word">Word to Exclude:</label>
+        <input type="text" id="excluded-word" placeholder="e.g., broken, damaged">
+        <button id="add-excluded">Add</button>
+      </div>
+      
+      <h3>Current Excluded Words</h3>
+      <ul id="excluded-words-list">
+        <!-- Excluded words will be listed here -->
+      </ul>
+    </div>
+    
+    <!-- Location Settings Tab -->
+    <div id="location" class="tab-content">
+      <h2>Location Settings</h2>
+      
+      <div class="form-group">
+        <label for="location-select">Default Location:</label>
+        <select id="location-select">
+          <option value="melbourne">Melbourne</option>
+          <option value="brisbane">Brisbane</option>
+          <option value="sydney">Sydney</option>
+          <!-- More locations can be added -->
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="fixed-lat">Your Latitude:</label>
+        <input type="text" id="fixed-lat" placeholder="e.g., -37.8136">
+      </div>
+      
+      <div class="form-group">
+        <label for="fixed-lon">Your Longitude:</label>
+        <input type="text" id="fixed-lon" placeholder="e.g., 144.9631">
+      </div>
+      
+      <div class="map-container">
+        <div id="location-map">
+          <!-- Map will be embedded here -->
+        </div>
+        <button id="get-current-location">Use Current Location</button>
+      </div>
+    </div>
+    
+    <!-- Schedule Settings Tab -->
+    <div id="schedule" class="tab-content">
+      <h2>Monitoring Schedule</h2>
+      
+      <div class="form-group">
+        <label for="monitoring-mode">Monitoring Mode:</label>
+        <select id="monitoring-mode">
+          <option value="auto">Automatic (Based on Time)</option>
+          <option value="always">Always Active (Testing Mode)</option>
+          <option value="manual">Manual Control</option>
+        </select>
+      </div>
+      
+      <div id="auto-schedule-settings">
+        <h3>Automatic Schedule</h3>
+        
+        <div class="form-group">
+          <label for="start-time">Start Time:</label>
+          <input type="time" id="start-time" value="06:30">
+        </div>
+        
+        <div class="form-group">
+          <label for="end-time">End Time:</label>
+          <input type="time" id="end-time" value="22:00">
+        </div>
+      </div>
+      
+      <div class="form-group checkbox">
+        <input type="checkbox" id="mode-only-preferred">
+        <label for="mode-only-preferred">Only show preferred products</label>
+      </div>
+      
+      <div class="form-group checkbox">
+        <input type="checkbox" id="near-good-deals">
+        <label for="near-good-deals">Show near good deals</label>
+      </div>
+      
+      <div class="form-group checkbox">
+        <input type="checkbox" id="good-deals">
+        <label for="good-deals">Only show good deals</label>
+      </div>
+    </div>
+    
+    <div class="button-row">
+      <button id="save-settings">Save All Settings</button>
+      <button id="reset-settings">Reset to Default</button>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
